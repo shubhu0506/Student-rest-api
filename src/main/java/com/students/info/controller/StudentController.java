@@ -3,6 +3,8 @@ package com.students.info.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,53 +22,55 @@ import com.students.info.services.StudentService;
 @RestController
 public class StudentController {
 
+	final static Logger logger = LoggerFactory.getLogger(StudentController.class);
+	
 //get all students
 	@Autowired
 	private StudentService studentService;
 
-	@GetMapping("/students")
+	@GetMapping("/student")
 	public ResponseEntity<List<Student>> getStudents() {
-		List<Student> list = studentService.getAllStudentss();
+		List<Student> list = studentService.getAllStudent();
 		return ResponseEntity.status(HttpStatus.CREATED).body(list);
 	}
 
 	// single student
-	@GetMapping("/students/{rollNo}")
+	@GetMapping("/student/{rollNo}")
 	public ResponseEntity<Student> getStudent(@PathVariable("rollNo") int rollno) {
 		Student std = studentService.getStudentById(rollno);
 		return ResponseEntity.of(Optional.of(std));
 	}
 
 	// add book
-	@PostMapping("/students")
+	@PostMapping("/student")
 	public ResponseEntity<Student> addStudent(@RequestBody Student std) {
 		Student b = null;
 		try {
 			b = this.studentService.addStudent(std);
-			System.out.println(std);
+			logger.info("{} Students: " +std);
 			return ResponseEntity.status(HttpStatus.CREATED).build();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 
 	}
 
 	// delete student
-	@DeleteMapping("/students/{rollNo}")
+	@DeleteMapping("/student/{rollNo}")
 	public ResponseEntity<Void> deleteStudent(@PathVariable("rollNo") int rollNo) {
 		try {
 			this.studentService.deleteStudent(rollNo);
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 
 	}
 
 	// update handler
-	@PutMapping("/students/{cityName}")
+	@PutMapping("/student/{cityName}")
 	public ResponseEntity<Student> updateStudent(@RequestBody Student std, @PathVariable("cityName") String cityName) {
 		try {
 			this.studentService.updateStudent(std, cityName);
