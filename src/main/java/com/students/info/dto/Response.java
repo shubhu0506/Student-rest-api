@@ -15,29 +15,29 @@ import lombok.NoArgsConstructor;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Response extends BaseResponse{
 
-	private List<String> data;
-	private String token;
-	private int dataSize;
+//	private List<String> data;
+//	private String token;
+//	private int dataSize;
 	private List<Student> studentList;
 	private Student student;
 
-	public Response(String token) {
-		this.token = token;
-	}
+//	public Response(String token) {
+//		this.token = token;
+//	}
 
 	public Response(int statusCode, String message) {
 		super(statusCode, message);
 	}
 
-	public Response(int statusCode, String message, String token) {
-		super(statusCode, message);
-		this.token = token;
-	}
+//	public Response(int statusCode, String message, String token) {
+//		super(statusCode, message);
+//		this.token = token;
+//	}
 	
-	public Response(int statusCode, String message, int dataSize) {
-		super(statusCode, message);
-		this.dataSize = dataSize;
-	}
+//	public Response(int statusCode, String message, int dataSize) {
+//		super(statusCode, message);
+//		this.dataSize = dataSize;
+//	}
 	
 	
 	
