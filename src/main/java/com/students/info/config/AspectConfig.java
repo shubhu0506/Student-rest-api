@@ -16,7 +16,7 @@ public class AspectConfig {
 
 	final static Logger logger = LoggerFactory.getLogger(AspectConfig.class);
 	
-	@Before("execution(public * com.students.info.services.*.*(..))")
+	@Before("execution(public * com.students.info.service.*.*(..))")
 	public void logBeforeAllMethods(JoinPoint joinPoint)
 	{
 		logger.info("{} Started :@Before Advice" ,joinPoint.getSignature().getName());
@@ -34,13 +34,13 @@ public class AspectConfig {
 		logger.info( "{} Ended :@After Returning Controller Advice" ,joinPoint.getSignature().getName());
 	}
 	
-	@AfterReturning("execution(* com.students.info.services.*.*(..))")
+	@AfterReturning("execution(* com.students.info.service.*.*(..))")
 	public void logAfterReturningAll(JoinPoint joinPoint)
 	{
 		logger.info("{} Ended :@After Returning Advice",joinPoint.getSignature().getName());
 	}
 	
-	@After("execution(* com.students.info.services.*.*(..))")
+	@After("execution(* com.students.info.service.*.*(..))")
 	public void endAll(JoinPoint joinPoint)
 	{
 		logger.info( "{} Finished :@After Advice", joinPoint.getSignature().getName());
@@ -52,7 +52,7 @@ public class AspectConfig {
 		logger.info("{} Finished :@After Controller Advice", joinPoint.getSignature().getName());
 	}
 	
-	@AfterThrowing(pointcut="execution(* com.students.info.services.StudentService.getAllStudentss(..))",
+	@AfterThrowing(pointcut="execution(* com.students.info.service.StudentService.getAllStudentss(..))",
 			throwing="theExc")
 	public void afterThrowing(JoinPoint joinPoint,Throwable theExc)
 	{
