@@ -1,6 +1,5 @@
 package com.students.info.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -16,8 +15,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.students.info.dto.Response;
 import com.students.info.entity.Student;
-import com.students.info.services.StudentService;
+import com.students.info.service.StudentService;
 
 @RestController
 public class StudentController {
@@ -29,30 +29,45 @@ public class StudentController {
 	private StudentService studentService;
 
 	@GetMapping("/student")
-	public ResponseEntity<List<Student>> getStudents() {
-		List<Student> list = studentService.getAllStudent();
-		return ResponseEntity.status(HttpStatus.CREATED).body(list);
+	public ResponseEntity<Response> getStudents() {
+	     Response response=studentService.getAllStudent();
+	     if(response.getStatusCode()==200)
+	     {
+	    	 return ResponseEntity.status(HttpStatus.OK).body(response);
+	     }
+	     else
+	     {
+	    	 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response); 
+	     }
+	
 	}
 
 	// single student
 	@GetMapping("/student/{rollNo}")
-	public ResponseEntity<Student> getStudent(@PathVariable("rollNo") int rollno) {
-		Student std = studentService.getStudentById(rollno);
-		return ResponseEntity.of(Optional.of(std));
+	public ResponseEntity<Response> getStudent(@PathVariable("rollNo") int rollno) {
+		Response res= studentService.getStudentById(rollno);
+		if(res.getStatusCode()==200)
+		{
+			 return ResponseEntity.status(HttpStatus.OK).body(res);
+		}
+		else
+		{
+	 	 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(res);
+		}
 	}
 
 	// add book
 	@PostMapping("/student")
-	public ResponseEntity<Student> addStudent(@RequestBody Student std) {
-		Student b = null;
-		try {
-			b = this.studentService.addStudent(std);
-			logger.info("{} Students: " +std);
-			return ResponseEntity.status(HttpStatus.CREATED).build();
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-		}
+	public ResponseEntity<Response> addStudent(@RequestBody Student std) {
+		Response response=this.studentService.addStudent(std);
+		 if(response.getStatusCode()==200)
+	     {
+	    	 return ResponseEntity.status(HttpStatus.OK).body(response);
+	     }
+	     else
+	     {
+	    	 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response); 
+	     }
 
 	}
 
@@ -71,14 +86,17 @@ public class StudentController {
 
 	// update handler
 	@PutMapping("/student/{cityName}")
-	public ResponseEntity<Student> updateStudent(@RequestBody Student std, @PathVariable("cityName") String cityName) {
-		try {
-			this.studentService.updateStudent(std, cityName);
-			return ResponseEntity.ok().build();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-		}
+	public ResponseEntity<Response> updateStudent(@RequestBody Student std, @PathVariable("cityName") String cityName) {
+		Response response=this.studentService.updateStudent(std, cityName);
+		 if(response.getStatusCode()==200)
+	     {
+	    	 return ResponseEntity.status(HttpStatus.OK).body(response);
+	     }
+	     else
+	     {
+	    	 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response); 
+	     }
+
 
 	}
 
