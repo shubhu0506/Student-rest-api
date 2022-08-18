@@ -3,11 +3,13 @@ package com.students.info.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.student.info.customexception.CustomExceptionHandler;
-import com.students.info.dao.StudentsRepo;
 import com.students.info.entity.Student;
+import com.students.info.repo.StudentsRepo;
 
 @Component
 public class StudentService {

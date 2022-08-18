@@ -1,4 +1,4 @@
-package com.students.info.dao;
+package com.students.info.repo;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;

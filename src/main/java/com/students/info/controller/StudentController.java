@@ -27,9 +27,6 @@ public class StudentController {
 	@GetMapping("/students")
 	public ResponseEntity<List<Student>> getStudents() {
 		List<Student> list = studentService.getAllStudentss();
-		if (list.size() <= 0) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-		}
 		return ResponseEntity.status(HttpStatus.CREATED).body(list);
 	}
 
@@ -37,9 +34,6 @@ public class StudentController {
 	@GetMapping("/students/{rollNo}")
 	public ResponseEntity<Student> getStudent(@PathVariable("rollNo") int rollno) {
 		Student std = studentService.getStudentById(rollno);
-		if (std == null) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-		}
 		return ResponseEntity.of(Optional.of(std));
 	}
 
