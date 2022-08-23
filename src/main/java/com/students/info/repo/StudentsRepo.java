@@ -1,10 +1,8 @@
 package com.students.info.repo;
-import java.util.List;
-
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.students.info.entity.Student;
-public interface StudentsRepo extends CrudRepository<Student,Integer>{
+public interface StudentsRepo extends JpaRepository<Student,Integer>{
 
 	public Student findById(int id);
 }

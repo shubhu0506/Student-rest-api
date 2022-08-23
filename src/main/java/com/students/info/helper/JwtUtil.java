@@ -19,7 +19,7 @@ public class JwtUtil {
 		
 	    private static final long serialVersionUID=-255018516526007488L;
 	    
-	    private static final long JWT_TOKEN_VALIDITY=10 * 60 * 60 * 5;
+	    private static final long JWT_TOKEN_VALIDITY=10 * 60 * 60 * 10;
 	    
 	    private String SECRET_KEY = "secret";
 
