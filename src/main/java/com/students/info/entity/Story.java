@@ -9,8 +9,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity
 @Table(name = "story")
 public class Story {
@@ -24,27 +33,4 @@ public class Story {
 	@JsonBackReference
 	private Book book;
 
-	public int getStoryId() {
-		return storyId;
-	}
-
-	public void setStoryId(int storyId) {
-		this.storyId = storyId;
-	}
-
-	public String getStoryName() {
-		return storyName;
-	}
-
-	public void setStoryName(String storyName) {
-		this.storyName = storyName;
-	}
-
-	public Book getBook() {
-		return book;
-	}
-
-	public void setBook(Book book) {
-		this.book = book;
-	}
 }

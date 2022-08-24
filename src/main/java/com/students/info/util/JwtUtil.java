@@ -1,4 +1,4 @@
-package com.students.info.helper;
+package com.students.info.util;
 
 import java.util.Date;
 

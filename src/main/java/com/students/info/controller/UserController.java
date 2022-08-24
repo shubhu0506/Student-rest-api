@@ -12,30 +12,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.students.info.entity.User;
-import com.students.info.repo.UserRepo;
+import com.students.info.repository.UserRepository;
+import com.students.info.service.UserServiceImpl;
 
 @RestController
 public class UserController {
 
 	@Autowired
-	private UserRepo userRepository;
-
+	private UserServiceImpl userService;
+	
 	@RequestMapping(value = "/user/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public User createUser(@RequestBody User user) {
-		return userRepository.save(user);
+		return userService.addUser(user);
 	}
 
 	@GetMapping("/user/details/{id}")
 	public User getUser(@PathVariable Long id) {
-		if (userRepository.findById(id).isPresent())
-			return userRepository.findById(id).get();
-		else
-			return null;
+		return userService.getById(id);
 	}
 
 	@GetMapping("/user/all")
 	public List<User> getUsers() {
-		return userRepository.findAll();
+		return userService.getAllUser();
 	}
 
 }

@@ -5,12 +5,12 @@ import org.springframework.stereotype.Service;
 
 import com.students.info.entity.Book;
 import com.students.info.entity.Story;
-import com.students.info.repo.BookRepo;
+import com.students.info.repository.BookRepository;
 
 @Service
 public class BookServiceImpl implements BookService {
     @Autowired
-    private BookRepo bookRepository;
+    private BookRepository bookRepository;
     public Book saveBook(Book book) {
         Story story = book.getStory();
         story.setBook(book);

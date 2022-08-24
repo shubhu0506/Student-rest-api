@@ -4,6 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity
 @Table(name = "students")
 public class Student {
@@ -11,46 +21,5 @@ public class Student {
 	private int rollNo;
 	private String name;
 	private String city;
-
-	public int getRollNo() {
-		return rollNo;
-	}
-
-	public void setRollNo(int rollNo) {
-		this.rollNo = rollNo;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public Student(int rollNo, String name, String city) {
-		super();
-		this.rollNo = rollNo;
-		this.name = name;
-		this.city = city;
-	}
-
-	public Student() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public String toString() {
-		return "Student [rollNo=" + rollNo + ", name=" + name + ", city=" + city + "]";
-	}
 
 }

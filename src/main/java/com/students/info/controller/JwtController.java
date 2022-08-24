@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.students.info.helper.JwtUtil;
 import com.students.info.model.JwtRequest;
 import com.students.info.model.JwtResponse;
 import com.students.info.service.CustomUserDetailService;
+import com.students.info.util.JwtUtil;
 
 
 @RestController

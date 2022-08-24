@@ -1,4 +1,4 @@
-package com.students.info.repo;
+package com.students.info.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -8,5 +8,5 @@ import com.students.info.entity.Employee;
 
 
 @Repository
-public interface EmployeeRepo extends JpaRepository<Employee, Integer> { 
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> { 
 }

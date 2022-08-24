@@ -7,16 +7,16 @@ import org.springframework.stereotype.Service;
 
 import com.students.info.entity.Department;
 import com.students.info.entity.Employee;
-import com.students.info.repo.DepartmentRepo;
-import com.students.info.repo.EmployeeRepo;
+import com.students.info.repository.DepartmentRepository;
+import com.students.info.repository.EmployeeRepository;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
-	private EmployeeRepo employeeRepository;
+	private EmployeeRepository employeeRepository;
 	@Autowired
-	private DepartmentRepo departmentRepository;
+	private DepartmentRepository departmentRepository;
 
 	public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
