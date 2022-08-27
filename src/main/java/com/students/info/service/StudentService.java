@@ -13,7 +13,7 @@ import com.student.info.customexception.CustomExceptionHandler;
 import com.students.info.config.AspectConfig;
 import com.students.info.dto.Response;
 import com.students.info.entity.Student;
-import com.students.info.repo.StudentsRepo;
+import com.students.info.repository.StudentsRepository;
 
 @Component
 public class StudentService {
@@ -21,7 +21,7 @@ public class StudentService {
 	final static Logger logger = LoggerFactory.getLogger(StudentService.class);
 	
 	@Autowired
-	private StudentsRepo studentRepository;
+	private StudentsRepository studentRepository;
 
 	// get all students
 	public Response getAllStudent() {
