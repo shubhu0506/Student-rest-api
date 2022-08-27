@@ -18,18 +18,18 @@ public class RoleController {
 	@Autowired
 	private RoleImpl roleService;
 	
-	@PostMapping("/role/create")
+	@PostMapping("/role")
 	public Role createRole(@RequestBody Role role) {
 	       return roleService.addRole(role);
 	}
 
 
-	@GetMapping("/role/details/{id}")
+	@GetMapping("/role/{id}")
 	public Role getRole(@PathVariable Long id) {
 		 return roleService.getRole(id);
 	}
 
-	@GetMapping("/role/all")
+	@GetMapping("/role")
 	public List<Role> getRoles() {
 		return roleService.getAllRole();
 	}

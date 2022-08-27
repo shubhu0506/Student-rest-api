@@ -21,17 +21,17 @@ public class UserController {
 	@Autowired
 	private UserServiceImpl userService;
 	
-	@RequestMapping(value = "/user/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/user", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public User createUser(@RequestBody User user) {
 		return userService.addUser(user);
 	}
 
-	@GetMapping("/user/details/{id}")
+	@GetMapping("/user/{id}")
 	public User getUser(@PathVariable Long id) {
 		return userService.getById(id);
 	}
 
-	@GetMapping("/user/all")
+	@GetMapping("/user")
 	public List<User> getUsers() {
 		return userService.getAllUser();
 	}

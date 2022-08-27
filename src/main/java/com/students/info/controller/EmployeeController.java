@@ -21,7 +21,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeServiceImpl employeeService;
 
-	@GetMapping("/get-employees")
+	@GetMapping("/get-employee")
 	public ResponseEntity<List<Employee>> getAllEmployees() {
 		List<Employee> employees = employeeService.getAllEmployees();
 		return new ResponseEntity<>(employees, HttpStatus.OK);
@@ -39,7 +39,7 @@ public class EmployeeController {
 		return new ResponseEntity<>(emp, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/employee")
+	@DeleteMapping("/employee/{employeeId}")
 	public ResponseEntity<String> deleteEmployee(@RequestParam(name = "employeeId") Integer employeeId) {
 		employeeService.deleteEmployees(employeeId);
 		return new ResponseEntity<>("Employee with ID :" + employeeId + " deleted successfully", HttpStatus.OK);
