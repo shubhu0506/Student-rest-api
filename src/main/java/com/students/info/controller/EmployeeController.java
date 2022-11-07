@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.students.info.entity.Employee;
+import com.students.info.security.SecuredRestController;
 import com.students.info.service.EmployeeServiceImpl;
 
 @RestController
-public class EmployeeController {
+public class EmployeeController implements SecuredRestController  {
 	@Autowired
 	private EmployeeServiceImpl employeeService;
 

@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.students.info.entity.User;
-import com.students.info.repository.UserRepository;
+import com.students.info.security.SecuredRestController;
 import com.students.info.service.UserServiceImpl;
 
 @RestController
-public class UserController {
+public class UserController implements SecuredRestController {
 
 	@Autowired
 	private UserServiceImpl userService;

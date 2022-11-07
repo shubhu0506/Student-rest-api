@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.students.info.entity.Role;
+import com.students.info.security.SecuredRestController;
 import com.students.info.service.RoleImpl;
 
 @RestController
-public class RoleController {
+public class RoleController  implements SecuredRestController{
 
 	@Autowired
 	private RoleImpl roleService;

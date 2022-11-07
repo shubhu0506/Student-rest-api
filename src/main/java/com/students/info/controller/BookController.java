@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.students.info.entity.Book;
+import com.students.info.security.SecuredRestController;
 import com.students.info.service.BookService;
 
 @RestController
 @RequestMapping(value = "/book")
-public class BookController {
+public class BookController implements SecuredRestController {
     @Autowired
     private BookService bookService;
     @RequestMapping(value = "/book", method = RequestMethod.POST)

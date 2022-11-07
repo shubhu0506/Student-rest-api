@@ -1,7 +1,5 @@
 package com.students.info.controller;
 
-import java.util.Optional;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.students.info.dto.Response;
 import com.students.info.entity.Student;
+import com.students.info.security.SecuredRestController;
 import com.students.info.service.StudentService;
 
 @RestController
-public class StudentController {
+public class StudentController implements SecuredRestController {
 
 	final static Logger logger = LoggerFactory.getLogger(StudentController.class);
 	
